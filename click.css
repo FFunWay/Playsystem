@@ -1,0 +1,196 @@
+body {
+    background-image: url('clickbackground.png');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    background-color: #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+#connectButton {
+    margin-bottom: 20px;
+    font-size: 30px;
+    width: 180px;
+    height: 60px;
+    background-color: #feab0f;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-family: 'Arial', sans-serif; /* 修改字體 */
+    font-weight: bold; /* 設置為粗體 */
+    transition: background-color 0.3s, box-shadow 0.3s;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+#connectButton:hover {
+    background-color: #f07502;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#connectButton:active {
+    background-color: #3e8e41;
+    transform: scale(0.98);
+}
+
+.button {
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    padding: 0; 
+    margin: 5px;
+}
+
+.button img {
+    width: 80px; /* 設定圖片大小 */
+    height: auto; /* 保持比例 */
+}
+
+.button img:hover {
+    transform: scale(1.1); /* 鼠標懸停時放大效果 */
+    transition: transform 0.1s; /* 過渡效果 */
+}
+
+.button img:active {
+    transform: scale(0.9); /* 點擊時縮小效果 */
+}
+
+#record {
+    margin: 20px;
+    font-size: 30px;
+    width: 300px;
+    text-align: center;
+    color: #333;
+    font-family: 'Arial', sans-serif; /* 修改字體 */
+    font-weight: bold; /* 設置為粗體 */
+}
+
+#controls {
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    font-family: 'Arial', sans-serif; /* 修改字體 */
+    font-weight: bold; /* 設置為粗體 */
+}
+
+#clearButton {
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    position: relative;
+    top: -10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: white;
+    background-color: #a0a7ae;
+}
+
+#sendButton {
+    width: 200px;
+    height: 50px;
+    font-size: 30px;
+    position: relative;
+    top: -60px;
+    left: 120px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: white;
+    background-color: #007BFF;
+}
+
+#clearButton:hover {
+    background-color: #3a3a3a;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+#sendButton:hover {
+    background-color: #0421c9;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}
+
+#sendButton:active {
+    background-color: #004494;
+    transform: scale(0.98);
+}
+
+#beeButton {
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    padding: 0; 
+    position: absolute;
+    top:0%;
+    left:10px;
+    text-align: center;
+}
+
+#beeButton img {
+    width: 100px; /* 設定寬度 */
+    height: auto; /* 高度自動，保持比例 */
+}
+
+#beeButton :hover {
+    transform: scale(1.05); /* 鼠標懸停時放大效果 */
+}
+
+#beeButton span {
+    display: block; /* 讓文字在圖片下方 */
+    font-size: 16px; /* 設定字體大小 */
+    margin-top: 5px; /* 增加文字與圖片之間的間距 */
+    color: #333; /* 字體顏色 */
+}
+
+#HBDButton {
+    border: none; 
+    background: none; 
+    cursor: pointer; 
+    padding: 0; 
+    position: absolute;
+    top:0%;
+    left:130px;
+}
+
+#HBDButton img {
+    width: 100px; /* 設定寬度 */
+    height: auto; /* 高度自動，保持比例 */
+}
+
+#HBDButton :hover {
+    transform: scale(1.05); /* 鼠標懸停時放大效果 */
+}
+
+.bopomofo {
+    font-size: 12px; /* 設定注音字體大小 */
+    color: #020202; /* 注音顏色 */
+}
+
+
+#regressionButton {
+    width: 100px;
+    height: 50px;
+    font-size: 30px;
+    position: relative;
+    top: -10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s, box-shadow 0.3s;
+    color: white;
+    background-color: #a0a7ae;
+}
+
+#regressionButton :hover{
+    background-color: #424242;
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+}

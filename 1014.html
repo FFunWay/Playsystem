@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="click.css">
+    <title>敲擊頁面</title>
+</head>
+<body>
+
+    <button id="connectButton">連接藍牙</button>
+    
+    <div id="buttonContainer">
+        <div>
+            <button class="button" data-value="1"><img src="button/C1.png" alt="1" /></button>
+            <button class="button" data-value="2"><img src="button/D1.png" alt="2" /></button>
+            <button class="button" data-value="3"><img src="button/E1.png" alt="3" /></button>
+            <button class="button" data-value="4"><img src="button/F1.png" alt="4" /></button>
+        </div>
+        <div>
+            <button class="button" data-value="5"><img src="button/G1.png" alt="5" /></button>
+            <button class="button" data-value="6"><img src="button/A1.png" alt="6" /></button>
+            <button class="button" data-value="7"><img src="button/B1.png" alt="7" /></button>
+            <button class="button" data-value="8"><img src="button/C2.png" alt="8" /></button>
+        </div>
+    </div>
+
+    <button id="beeButton" class="image-button">
+        <img src="bee_button.png" alt="小蜜蜂" />
+    </button>
+    <button id="HBDButton">
+        <img src="birthday.png" alt="生日"/>
+    </button>
+    <button id="regressionButton">回歸</button>
+    <div id="record">紀錄: </div>
+
+    <div id="controls">
+        <button id="clearButton">清除</button>
+        <button id="sendButton">開始彈奏</button>
+    </div>
+
+
+    <script>
+        let connected = false;
+        let record = [];
+        let bluetoothDevice = null;
+        let characteristic;
+
+        const serviceUuid = '0000ffe0-0000-1000-8000-00805f9b34fb';
+        const characteristicUuid = '0000ffe1-0000-1000-8000-00805f9b34fb';
+
+        // 連接藍牙
+        document.getElementById("connectButton").onclick = async () => {
+            try {
+                bluetoothDevice = await navigator.bluetooth.requestDevice({
+                    filters: [{ services: [serviceUuid] }]
+                });
+                
+                const server = await bluetoothDevice.gatt.connect();
+                characteristic = await server.getPrimaryService(serviceUuid).then(service => {
+                    return service.getCharacteristic(characteristicUuid);
+                });
+                
+                connected = true;
+                console.log("已連接HM-10");
+                alert("已連接HM-10");
+            } catch (error) {
+                console.error("連接失敗:", error);
+                alert("連接失敗");
+            }
+        };
+
+        // 記錄按鈕按下的數字
+        document.querySelectorAll(".button").forEach(button => {
+            button.onclick = () => {
+                if (connected) {
+                    const value = button.getAttribute("data-value");
+                    record.push(value);
+                    document.getElementById("record").innerText = "紀錄: " + record.join(", ");
+                } else {
+                    alert("請先連接藍牙");
+                }
+            };
+        });
+
+        // 清除紀錄
+        document.getElementById("clearButton").onclick = () => {
+            record = [];
+            document.getElementById("record").innerText = "紀錄: ";
+        };
+
+        // 傳送數據到Arduino
+        document.getElementById("sendButton").onclick = async () => {
+            if (connected && record.length > 0) {
+                let dataToSend = record.join(",");
+                await sendDataWithChunks(dataToSend); // 使用分段機制傳送
+                alert("數據已傳送");
+            } else {
+                alert("請先連接藍牙或紀錄為空");
+            }
+        };
+
+        document.getElementById("beeButton").onclick = async () => {
+            if (connected) {
+                const presetData = "5,3,3,4,2,2,1,2,3,4,5,5,5,";
+                await sendDataWithChunks(presetData); // 使用分段機制傳送
+                alert("Bee sent!");
+            } else {
+                alert("請先連接藍牙");
+            }
+        };
+
+        document.getElementById("HBDButton").onclick = async () => {
+            if (connected) {
+                const presetData = "1,1,2,1,4,3,1,1,2,1,5,4,";
+                await sendDataWithChunks(presetData); // 使用分段機制傳送
+                alert("HBD sent!");
+            } else {
+                alert("請先連接藍牙");
+            }
+        };
+
+        document.getElementById("regressionButton").onclick = async () => {
+            if (connected) {
+                const regressionData = "4,5";
+                await sendDataWithChunks(regressionData); // 使用分段機制傳送
+                alert("回歸數據已傳送!");
+            } else {
+                alert("請先連接藍牙");
+            }
+        };
+
+        // 分段傳送數據的函數
+        async function sendDataWithChunks(data) {
+            const encoder = new TextEncoder();
+            if (data.length > 20) {
+                const chunks = [];
+                for (let i = 0; i < data.length; i += 20) {
+                    chunks.push(data.substring(i, i + 20)); // 每20字節分段
+                }
+                for (const chunk of chunks) {
+                    await sendBluetoothData(chunk);
+                }
+            } else {
+                await sendBluetoothData(data);
+            }
+        }
+
+        // 傳送藍牙數據的函數
+        async function sendBluetoothData(data) {
+            try {
+                const encoder = new TextEncoder();
+                await characteristic.writeValue(encoder.encode(data));
+                console.log("發送:", data);
+            } catch (error) {
+                console.error("發送失敗:", error);
+            }
+        }
+    </script>
+</body>
+</html>
