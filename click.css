@@ -17,7 +17,7 @@ body {
     font-size: 30px;
     width: 180px;
     height: 60px;
-    background-color: #feab0f;
+    background-color: #006aff;
     color: white;
     border: none;
     border-radius: 10px;
@@ -29,7 +29,7 @@ body {
 }
 
 #connectButton:hover {
-    background-color: #f07502;
+    background-color: #004271;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
@@ -74,9 +74,10 @@ body {
     width: 100px;
     height: 50px;
     font-size: 30px;
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
+    position: fixed;
+    left: 40%; /* 水平置中 */
+    bottom: 40px;
+    /* left: 20px; */
     font-family: 'Arial', sans-serif; /* 修改字體 */
     font-weight: bold; /* 設置為粗體 */
 }
@@ -107,7 +108,7 @@ body {
     cursor: pointer;
     transition: background-color 0.3s, box-shadow 0.3s;
     color: white;
-    background-color: #007BFF;
+    background-color: #ffa200;
 }
 
 #clearButton:hover {
@@ -115,12 +116,12 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 #sendButton:hover {
-    background-color: #0421c9;
+    background-color: #eb6f0a;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
 #sendButton:active {
-    background-color: #004494;
+    background-color: #fb6e09;
     transform: scale(0.98);
 }
 
@@ -181,7 +182,7 @@ body {
     height: 50px;
     font-size: 30px;
     position: relative;
-    top: -10px;
+    top: 0px;
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -190,7 +191,8 @@ body {
     background-color: #a0a7ae;
 }
 
-#regressionButton :hover{
+#regressionButton:hover{
     background-color: #424242;
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
+
