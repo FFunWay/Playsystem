@@ -196,15 +196,24 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
+/* 在寬度小於768px時進行樣式調整 */
+@media (max-width: 1000px) {
     #connectButton, #clearButton, #sendButton, #regressionButton {
-        width: 150px; /* 調整按鈕寬度 */
-        height: 50px; /* 調整按鈕高度 */
-        font-size: 24px; /* 調整字體大小 */
+        width: 110px; /* 調整按鈕寬度 */
+        height: 40px; /* 調整按鈕高度 */
+        font-size: 22px; /* 調整字體大小 */
     }
 
-    #buttonContainer .button img , #beeButton, #HBDButton{
-        width: 60px; /* 調整圖片大小 */
+    #buttonContainer .button img , #beeButton img, #HBDButton img{
+        width: 55px; /* 調整圖片大小 */
+    }
+
+    #beeButton {
+        left: 3%; 
+    }
+
+    #HBDButton{
+        left: 12%;
     }
 
     #record {
@@ -213,7 +222,24 @@ body {
 
     #controls {
         width: auto; /* 自動適應寬度 */
-        left: 50%; /* 居中對齊 */
+        left: 40%; /* 居中對齊 */
         transform: translateX(-50%);
+        font-size: 20px;
+    }
+
+    #sendButton {
+        width: 100px;
+        height: auto;
+        top:20px;
+        left: 100px;
+        font-size: 20px;
+    }
+
+    #clearButton {
+        width: 80px;
+        height: auto;
+        top:20px;
+        font-size: 20px;
+        left:80px;
     }
 }
