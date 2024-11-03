@@ -197,7 +197,7 @@ body {
 }
 
 /* 在寬度小於768px時進行樣式調整 */
-@media (max-width: 2000px) {
+@media (max-width: 2500px) {
     #connectButton, #clearButton, #sendButton, #regressionButton {
         width: 110px; /* 調整按鈕寬度 */
         height: 40px; /* 調整按鈕高度 */
