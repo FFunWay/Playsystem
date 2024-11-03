@@ -39,6 +39,8 @@ body {
 }
 
 .button {
+    position: relative;
+    top: -10px;
     border: none; 
     background: none; 
     cursor: pointer; 
@@ -71,13 +73,12 @@ body {
 }
 
 #controls {
-    width: 100px;
-    height: 50px;
-    font-size: 30px;
-    position: fixed;
-    left: 40%; /* 水平置中 */
-    bottom: 40px;
-    /* left: 20px; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px; /* 按鈕之間的間距 */
+    position: relative;
+    top: 40px; /* 控制整體位置 */
     font-family: 'Arial', sans-serif; /* 修改字體 */
     font-weight: bold; /* 設置為粗體 */
 }
@@ -86,8 +87,8 @@ body {
     width: 100px;
     height: 50px;
     font-size: 30px;
-    position: relative;
-    top: -10px;
+    /* position: relative;
+    top: -10px; */
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -100,9 +101,9 @@ body {
     width: 200px;
     height: 50px;
     font-size: 30px;
-    position: relative;
-    top: -60px;
-    left: 120px;
+    /* position: relative; */
+    /* top: -60px;
+    left: 120px; */
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -181,8 +182,9 @@ body {
     width: 100px;
     height: 50px;
     font-size: 30px;
-    position: relative;
-    top: 0px;
+    /* position: relative;
+    top: -60px;
+    left:0px; */
     border: none;
     border-radius: 10px;
     cursor: pointer;
@@ -197,15 +199,15 @@ body {
 }
 
 /* 在寬度小於768px時進行樣式調整 */
-@media (max-width: 2500px) {
+@media (max-width: 1000px) {
     #connectButton, #clearButton, #sendButton, #regressionButton {
         width: 110px; /* 調整按鈕寬度 */
-        height: 40px; /* 調整按鈕高度 */
+        height: auto; /* 調整按鈕高度 */
         font-size: 22px; /* 調整字體大小 */
     }
 
     #buttonContainer .button img , #beeButton img, #HBDButton img{
-        width: 55px; /* 調整圖片大小 */
+        width: 60px; /* 調整圖片大小 */
     }
 
     #beeButton {
@@ -218,11 +220,14 @@ body {
 
     #record {
         font-size: 20px; /* 調整紀錄文字大小 */
+        position: relative;
+        top: -20px;
     }
 
     #controls {
         width: auto; /* 自動適應寬度 */
-        left: 40%; /* 居中對齊 */
+        left: 20%; /* 居中對齊 */
+        top:-20px;
         transform: translateX(-50%);
         font-size: 20px;
     }
