@@ -196,3 +196,24 @@ body {
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
 }
 
+@media (max-width: 768px) {
+    #connectButton, #clearButton, #sendButton, #regressionButton {
+        width: 150px; /* 調整按鈕寬度 */
+        height: 50px; /* 調整按鈕高度 */
+        font-size: 24px; /* 調整字體大小 */
+    }
+
+    #buttonContainer .button img , #beeButton, #HBDButton{
+        width: 60px; /* 調整圖片大小 */
+    }
+
+    #record {
+        font-size: 20px; /* 調整紀錄文字大小 */
+    }
+
+    #controls {
+        width: auto; /* 自動適應寬度 */
+        left: 50%; /* 居中對齊 */
+        transform: translateX(-50%);
+    }
+}
